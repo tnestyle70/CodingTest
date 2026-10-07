@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>본질 정본 — 자료구조·알고리즘·복잡도 (코테용)</title>
+<style>
+:root {
+  --bg: #fdfdfb; --fg: #1e2227; --muted: #5c6570; --line: #dde2e8;
+  --accent: #0b5fa5; --accent-bg: #eef5fb; --warn: #a33a2a; --warn-bg: #fbf1ee;
+  --card: #f5f7f9; --code-bg: #eef1f4; --th-bg: #f0f3f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171b; --fg: #dde3e9; --muted: #98a2ad; --line: #313841;
+    --accent: #5aa7e0; --accent-bg: #1b2733; --warn: #e08573; --warn-bg: #2e2019;
+    --card: #1b2027; --code-bg: #232931; --th-bg: #1e242b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.65; font-size: 16px;
+}
+.wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+h1 { font-size: 1.6rem; line-height: 1.35; margin: 0 0 .4rem; }
+h2 { font-size: 1.25rem; margin: 2.8rem 0 .8rem; padding-top: 1.2rem; border-top: 2px solid var(--line); }
+h3 { font-size: 1.05rem; margin: 1.6rem 0 .5rem; color: var(--accent); }
+p { margin: .6rem 0; }
+.meta { color: var(--muted); font-size: .9rem; margin-bottom: 1.4rem; }
+.toc { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1.2rem; font-size: .92rem; }
+.toc b { display: block; margin-bottom: .3rem; }
+.toc a { color: var(--accent); text-decoration: none; margin-right: 1.1rem; white-space: nowrap; }
+.toc a:hover { text-decoration: underline; }
+.def {
+  background: var(--accent-bg); border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: .8rem 1.1rem; margin: 1rem 0; font-size: 1.02rem;
+}
+.def strong { color: var(--accent); }
+.warn {
+  background: var(--warn-bg); border-left: 4px solid var(--warn);
+  border-radius: 0 8px 8px 0; padding: .7rem 1.1rem; margin: 1rem 0; font-size: .95rem;
+}
+.tablewrap { overflow-x: auto; margin: 1rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { border: 1px solid var(--line); padding: .45rem .65rem; text-align: left; vertical-align: top; }
+th { background: var(--th-bg); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+code {
+  background: var(--code-bg); border-radius: 4px; padding: .1em .35em;
+  font-family: Consolas, "D2Coding", monospace; font-size: .88em;
+}
+ul { margin: .5rem 0; padding-left: 1.4rem; }
+li { margin: .3rem 0; }
+.pass { color: #2e7d32; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .pass { color: #81c784; } }
+.fail { color: var(--warn); font-weight: 700; }
+.foot { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--line); color: var(--muted); font-size: .88rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>본질 정본 — 자료구조·알고리즘·복잡도</h1>
+<div class="warn"><strong>2026-10-02 교정 안내:</strong> 아래 HTML은 2026-07-27 당시의 보관본입니다. 선계산·키/값 일반화, 시간·메모리 예산, 문자열 비용 등의 교정은 <a href="ESSENCE_CORE.md">최신 Markdown 정본</a>에 반영했습니다. 현재 학습에는 <a href="2026-10-02_UNIFIED_PROBLEM_SOLVING.md">통합 풀이 사고 가이드</a>와 최신 정본을 사용하세요.</div>
+<p class="meta">작성일 2026-07-27 · 코테용 · 문제 푸는 동안 옆에 두는 문서 = 이것 + STL_COST_SHEET 두 장 · md판: ESSENCE_CORE.md</p>
+
+<nav class="toc">
+<b>차례</b>
+<a href="#defs">1 두 정의</a>
+<a href="#time">2 시간 복잡도</a>
+<a href="#space">3 공간 복잡도</a>
+<a href="#ds">4 반복 질문 표</a>
+<a href="#algo">5 패러다임 표</a>
+<a href="#use">6 검문소 접속점</a>
+</nav>
+
+<h2 id="defs">1. 두 정의</h2>
+
+<h3>자료구조의 본질</h3>
+<div class="def"><strong>자료구조 = 반복되는 질문에 대한 답을 미리 계산해 두는 배치.</strong></div>
+<ul>
+<li>그릇이 아니라 <b>계약</b>이다. 각 구조는 "특정 질문에 특정 비용으로 답한다"를 약속한다: 해시는 "이 키의 값은?"에 평균 O(1), 힙은 "지금 극값은?"에 O(1), 스택은 "가장 최근의 미해결은?"에 O(1).</li>
+<li>마스터 식(ESSENCE_BRIDGE)의 <b>미리 심은 지식</b> 슬롯이 바로 이것.</li>
+<li>따라서 자료구조 선택은 암기가 아니라 <b>번역</b>이다: 완전탐색의 안쪽 루프가 묻는 질문을 "X가 주어지면 Y는?" 꼴로 정규화하면 — X = 키, Y = 값, X의 성질(문자열/조밀 정수/순서 필요 여부)이 구조를 정한다.</li>
+</ul>
+
+<h3>알고리즘의 본질</h3>
+<div class="def"><strong>알고리즘 = 불변식을 유지하면서, 해야 할 일을 생략·재배치·재사용하는 유한 절차.</strong></div>
+<ul>
+<li><b>정확성의 근거는 불변식</b>이다. "루프가 i까지 돈 순간 무엇이 참인가"를 말할 수 없으면 그 코드는 우연히 맞는 코드다. 버그 = 불변식 위반.</li>
+<li><b>속도의 근거는 생략</b>이다. 완전탐색 대비 무엇을 안 하기로 했는지(재계산 생략, 후보 절반 생략, 재방문 생략) 말할 수 없으면 그 풀이는 완전탐색과 같은 속도다.</li>
+<li>경계 보정(ESSENCE_BRIDGE 보정 2): "안 보는 법"이 전부는 아니다 — 정렬처럼 일을 전부 하되 <b>배치·순서·재사용</b>으로 이기는 알고리즘도 있다.</li>
+</ul>
+
+<h3>둘의 관계 — 3단 판별</h3>
+<p>알고리즘이 반복해서 묻고, 자료구조가 선불로 답한다. 판별 순서는 항상:</p>
+<ul>
+<li>① <b>반복 질문 찾기</b> — 완전탐색의 안쪽 루프를 가리키고 "이 루프는 무슨 질문에 답하는가?"</li>
+<li>② <b>답의 불변 여부</b> — 그 답이 물을 때마다 변하는가?</li>
+<li>③ <b>불변이면 선계산</b>(해시·누적 합·정렬), <b>변하면 갱신형 구조</b>(힙·트리·유니온 파인드).</li>
+</ul>
+
+<h2 id="time">2. 시간 복잡도 — 성장률과 예산</h2>
+
+<h3>정의</h3>
+<ul>
+<li>빅오는 시간이 아니라 <b>성장률</b>이다: "N이 10배가 되면 작업량은 몇 배인가?" O(N)은 10배, O(N²)은 100배, O(log N)은 +3.3회.</li>
+<li><b>최악을 먼저 적고</b>, 평균(unordered 계열)은 조건을 명시한 뒤에만 쓴다 (Evidence Rules). 상환(vector push_back)도 같은 취지로 조건 명시 후에만 쓴다 (이 문서의 확장).</li>
+<li>후보는 복잡도로 좁히고 <b>승자는 채점기 실측으로만</b> 확정한다 (보정 3 — 빅오가 예산 안이어도 상수·캐시로 흔들린다).</li>
+</ul>
+
+<h3>성장률 사다리 (N = 10⁵ 대입)</h3>
+<div class="tablewrap"><table>
+<tr><th>복잡도</th><th class="num">N=10⁵일 때 작업 수</th><th>1초 예산(≈10⁸) 판정</th></tr>
+<tr><td>O(1)</td><td class="num">1</td><td class="pass">통과</td></tr>
+<tr><td>O(log N)</td><td class="num">≈17</td><td class="pass">통과</td></tr>
+<tr><td>O(N)</td><td class="num">10⁵</td><td class="pass">통과</td></tr>
+<tr><td>O(N log N)</td><td class="num">≈1.7×10⁶</td><td class="pass">통과</td></tr>
+<tr><td>O(N²)</td><td class="num">10¹⁰</td><td class="fail">탈락 (≈100초)</td></tr>
+<tr><td>O(N³)</td><td class="num">10¹⁵</td><td class="fail">탈락</td></tr>
+<tr><td>O(2ᴺ)</td><td class="num">표기 불가</td><td class="fail">탈락</td></tr>
+</table></div>
+
+<h3>예산 산술 절차 (검문소 3에서 이 순서대로)</h3>
+<ul>
+<li>① 제약표의 숫자마다 먼저 묻는다: <b>"개수인가, 값의 범위인가?"</b> (gotchas 2026-07-26 — 한 세션 5회 이상 재발 실사고). 값의 범위는 루프 횟수와 무관하고 <b>타입 상한과만</b> 대조한다: int ≈ 2.1×10⁹(약 21억), long long ≈ 9.2×10¹⁸(19자리).</li>
+<li>② 개수 N의 최댓값을 후보 복잡도에 대입한다. 기준: 채점기 ≈ <b>초당 10⁸ 단순 연산</b> (C++ 기준 보수 어림 — 인터프리터 언어는 ~10⁷/s로 한 단계 낮춰 계산).</li>
+<li>③ 문자열이 끼면 길이 L이 모든 항에 곱해진다 (비교·해시 O(L)). 단 사전순 비교는 첫 불일치에서 끝나므로 ×L은 최악 상수다.</li>
+<li>④ 합산·곱셈 결과의 상한도 계산한다 (예: 10⁴곡 × 10⁴회 = 10⁸ → int 안. 10⁵ × 10⁵ = 10¹⁰ → long long).</li>
+</ul>
+
+<h3>N 상한 → 허용 복잡도 역표 (경험칙)</h3>
+<div class="tablewrap"><table>
+<tr><th>N 최댓값</th><th>허용 상한</th><th>전형 도구</th></tr>
+<tr><td class="num">≤ 11</td><td>O(N!)</td><td>순열 전량 생성</td></tr>
+<tr><td class="num">≤ 25</td><td>O(2ᴺ)</td><td>비트마스크·부분집합 전량</td></tr>
+<tr><td class="num">≤ 400~500</td><td>O(N³)</td><td>삼중 루프, 플로이드-워셜 — 500³ = 1.25×10⁸로 이미 경계 초과, 안쪽 루프가 가벼울 때만</td></tr>
+<tr><td class="num">≤ 5,000</td><td>O(N²)</td><td>이중 루프</td></tr>
+<tr><td class="num">≤ 10⁶</td><td>O(N log N)</td><td>정렬·힙·트리·이분탐색</td></tr>
+<tr><td class="num">≤ 10⁷</td><td>O(N)</td><td>해시, 단일 순회, 투 포인터, 누적 합</td></tr>
+<tr><td class="num">그 이상 (10⁹+)</td><td>O(√N)·O(log N)·O(1)</td><td>이분탐색, 수학, 자릿수. √N은 N ≤ 10¹⁶까지(√10¹⁶ = 10⁸) — long long 최대 규모(10¹⁸)에선 √N ≈ 3×10⁹로 탈락</td></tr>
+</table></div>
+<div class="warn">경계는 10배쯤 흔들린다 (상수·언어·캐시). 경계선 위(예: N=10⁴에서 O(N²)=10⁸)면 "통과 도박"이 아니라 한 단계 낮추는 설계를 먼저 찾는다.</div>
+
+<h3>자주 쓰는 수치 (암산용)</h3>
+<ul>
+<li>log₂10 ≈ 3.3 → log₂(10⁵) ≈ 17, log₂(10⁶) ≈ 20</li>
+<li>2¹⁰ ≈ 10³, 2²⁰ ≈ 10⁶, 2³⁰ ≈ 10⁹</li>
+<li>10! ≈ 3.6×10⁶ (안전) · 11! ≈ 4.0×10⁷ (경계) · 12! ≈ 4.8×10⁸ (탈락권)</li>
+<li>조합 폭발 감각: 2ᴺ은 N+10마다 ×1000</li>
+</ul>
+
+<h2 id="space">3. 공간 복잡도 — 메모리 예산</h2>
+<ul>
+<li>정의: 입력 외에 <b>추가로</b> 잡는 메모리의 성장률. 시간과 같은 문법으로 계산하되 단위는 바이트.</li>
+<li>예산 어림: 채점기 통상 수백 MB(프로그래머스 미명시 시 256MB 어림). int 4바이트 기준 — 10⁶개 ≈ 4MB (안전) · 10⁷개 ≈ 40MB (허용) · 10⁸개 ≈ 400MB (<span class="fail">탈락</span>).</li>
+<li>2차원 배열은 곱이 전부다: 10⁴×10⁴ int = 10⁸개 = 400MB 탈락.</li>
+<li><b>재귀 깊이도 공간이다.</b> 위험 = 깊이 × 프레임 크기. 호출 스택은 로컬 Windows 기본 ≈1MB, 리눅스 채점기 통상 ≈8MB (환경별 상이) — 깊이 10⁵급이거나 프레임에 지역 배열·string이 있으면 명시적 스택/반복으로 바꾼다. 로컬에서만 죽고 채점기에선 사는 역방향 오판도 이 산술로 막는다.</li>
+<li>시간-공간 교환이 이 문서의 주제 그 자체다: <b>선불 O(N) 메모리로 반복 질문의 재계산 시간을 산다.</b> 해시 O(N) 메모리 = O(N²)→O(N) 시간의 가격표.</li>
+</ul>
+
+<h2 id="ds">4. 자료구조 = 반복 질문 사전답변 표</h2>
+<p>사용법: 검문소 4에서 적은 완전탐색의 안쪽 루프를 가리키고 → 그 루프가 답하는 질문을 아래 왼쪽 열에서 찾는다. 컨테이너별 비용·함정 상세는 STL_COST_SHEET.</p>
+<div class="tablewrap"><table>
+<tr><th>반복되는 질문</th><th>답하는 구조</th><th>질문당 비용</th><th>선불 비용</th><th>신호</th></tr>
+<tr><td>i번째 값은?</td><td>vector / 배열</td><td>O(1)</td><td>O(N) 저장</td><td>기본값 — 고민 없으면 이것</td></tr>
+<tr><td>이 키의 값은? / 본 적 있나? / 몇 번인가?</td><td>unordered_map / unordered_set</td><td>평균 O(1) · <b>최악 O(N)</b></td><td>O(N) 구축</td><td>존재·빈도·짝·그룹핑</td></tr>
+<tr><td>정렬 순서상 존재/위치/범위는? (이후 갱신 없음)</td><td>정렬 배열 + 이분탐색</td><td>O(log N)</td><td>O(N log N) 정렬</td><td>여러 번 묻는 존재·경계 질문</td></tr>
+<tr><td>이상/이하/최근접 키는? (삽입·삭제 섞임)</td><td>map / set (레드블랙 트리)</td><td>O(log N)</td><td>O(N log N) (N개 삽입, 문자열 키면 ×L)</td><td>순서 질문과 갱신이 공존</td></tr>
+<tr><td><b>가장 최근의 미해결 항목은?</b></td><td>stack</td><td>O(1)</td><td>—</td><td>괄호, 되돌리기, 가장 가까운 이전/다음 큰 원소</td></tr>
+<tr><td><b>가장 오래 기다린 항목은?</b></td><td>queue</td><td>O(1)</td><td>—</td><td>대기열 시뮬, 도착 순 공정, BFS</td></tr>
+<tr><td>양끝 모두에서 넣고 뺀다</td><td>deque</td><td>O(1)</td><td>—</td><td>슬라이딩 윈도우 극값</td></tr>
+<tr><td>지금 최솟/최댓값은? (삽입·삭제 섞임)</td><td>priority_queue (힙)</td><td>top O(1) · push/pop O(log N)</td><td>N회 push O(N log N) · 범위 생성자/make_heap O(N)</td><td>반복 극값 추출. 기본은 <b>max-heap</b></td></tr>
+<tr><td>구간 [i, j]의 합은? (원소 불변)</td><td>누적 합</td><td>O(1)</td><td>O(N)</td><td>구간 질문 다발</td></tr>
+<tr><td>같은 그룹인가? / 그룹 합치기</td><td>유니온 파인드</td><td>상환 O(α(N)) ≈ O(1) — 경로 압축+랭크 union 전제, 미적용 시 최악 O(N)</td><td>O(N)</td><td>연결성·병합</td></tr>
+<tr><td>이 노드의 이웃은?</td><td>인접 리스트</td><td>O(차수)</td><td>O(V+E) 구축</td><td>관계·연결 문제 전부</td></tr>
+</table></div>
+<div class="warn"><b>갱신형 판별 재확인</b>: 질문 사이에 답이 변하지 않으면 선계산(해시·누적 합·정렬 후 이분), 변하면 갱신형(힙·트리·유니온 파인드). "지금까지의 최솟값"류 질문에 단순 캐시를 쓰면 갱신에서 죽는다.</div>
+
+<h2 id="algo">5. 알고리즘 패러다임 — 본질 한 문장 표</h2>
+<p>ESSENCE_BRIDGE 10유형에서 알고리즘 패러다임을 추리고, 정본에 없는 투 포인터·백트래킹·분할정복을 추가했다 (해시·스택/큐·힙 등 자료구조 유형은 4장 표가 담당). 여기는 "본질 한 문장 + 적용 판별"만 담는다. 유형별 불변식은 ESSENCE_BRIDGE 참조.</p>
+<div class="tablewrap"><table>
+<tr><th>패러다임</th><th>본질 한 문장</th><th>적용 판별 질문</th><th>전형 복잡도</th></tr>
+<tr><td>완전탐색</td><td>생략하지 않기로 한 <b>결정</b> — 대신 예산 산술이 선행한다</td><td>최악 경우 수 × 경우당 비용이 예산 안인가?</td><td>상태 공간 크기에 비례</td></tr>
+<tr><td>정렬 기반</td><td>순서 재배치로 비교 구조를 단순화 — 일을 다 하되 <b>배치</b>로 이긴다</td><td>이웃 비교만으로 충분해지는가?</td><td>O(N log N)</td></tr>
+<tr><td>이분탐색</td><td><b>단조성</b>으로 후보 절반을 생략</td><td>판정 함수가 거짓→참으로 많아야 한 번 뒤집히는가?</td><td>O(log 범위) × 판정 비용</td></tr>
+<tr><td>투 포인터 / 슬라이딩 윈도우</td><td>포인터의 단조 이동으로 이중 루프의 <b>재시작을 생략</b></td><td>뒤로 돌아갈 필요가 없음을 증명할 수 있는가?</td><td>O(N)</td></tr>
+<tr><td>DFS/BFS</td><td>상태=노드, 행동=간선 <b>번역</b> + visited로 재방문 생략</td><td>상태 공간이 그래프로 그려지는가?</td><td>O(V+E) — 인접 리스트 + O(1) visited 전제 (set/map visited·문자열 상태면 log·L 배수)</td></tr>
+<tr><td>백트래킹</td><td>완전탐색 + <b>가지치기</b> — 실패가 확정된 가지를 즉시 후퇴</td><td>부분해 단계에서 실패를 조기 판정할 수 있는가?</td><td>가지치기 효율에 좌우</td></tr>
+<tr><td>그리디</td><td><b>교환 논증</b>이 나머지 후보 탐색을 대체</td><td>지역 최선이 전역 최적 도달 가능성을 보존함을 증명했는가? (증명 없으면 반례로 죽는다)</td><td>보통 정렬 O(N log N)</td></tr>
+<tr><td>분할정복</td><td>같은 꼴 부분 문제로 쪼개고, 합치는 비용을 싸게</td><td>부분 문제가 상수 개·상수 비율 축소(전형: 절반 2개)이고 결합이 O(N) 이하인가?</td><td>O(N log N) 전형 (조건이 다르면 재계산)</td></tr>
+<tr><td>동적 계획법</td><td>부분 문제 답의 <b>재사용</b> — 상태 = 미래 결정에 필요한 과거의 요약</td><td>중복 부분 문제가 있고, 상태가 같으면 이후 답도 같은가?</td><td>상태 수 × 전이 비용</td></tr>
+</table></div>
+<p>패러다임 선택도 자료구조와 같은 문법이다: 완전탐색 기준선에서 <b>무엇이 반복·낭비되는지</b>(재계산 → DP, 후보 전체 → 이분/그리디, 재방문 → visited)가 패러다임을 지목한다.</p>
+
+<h2 id="use">6. 검문소 접속점 (이 문서를 언제 펴는가)</h2>
+<div class="tablewrap"><table>
+<tr><th>검문소</th><th>이 문서에서 보는 곳</th></tr>
+<tr><td>3 예산 산술</td><td>2장 절차 + 역표, 3장 메모리 (옆에 STL_COST_SHEET)</td></tr>
+<tr><td>4 완전탐색 기준선</td><td>1장 "속도의 근거는 생략" — 기준선이 노출할 병목</td></tr>
+<tr><td>5 병목→유형</td><td>4장 질문 표 + 5장 패러다임 표 — 안쪽 루프의 질문을 소리 내 읽고 찾기</td></tr>
+<tr><td>6 선서술·불변식</td><td>1장 "정확성의 근거는 불변식" (유형별 불변식은 ESSENCE_BRIDGE)</td></tr>
+</table></div>
+
+<p class="foot">이 문서는 정의와 표만 담는다. 문제별 풀이는 담지 않는다 (Teaching Contract 준수). · 관련 정본: ESSENCE_BRIDGE.md(마스터 식) · STL_COST_SHEET.md(컨테이너 비용) · CHECKPOINT_QUESTIONS.md/html(검문소 해설)</p>
+
+</div>
+</body>
+</html>

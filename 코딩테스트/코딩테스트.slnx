@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../디버깅/Debugging/Debugging.vcxproj" Id="6197cd1e-dbba-47de-bb09-564638da5da8" />
+  <Project Path="코딩테스트.vcxproj" Id="e185a867-1413-40d2-9ea7-8f8bd8bad696" />
+</Solution>

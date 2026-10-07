@@ -1,0 +1,2 @@
+# Preserve the supplied guide exactly, including its original line endings.
+/코딩테스트_가이드.txt -text
