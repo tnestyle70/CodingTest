@@ -1,5 +1,7 @@
 # Algorithm Concept Index
 
+2026-10-10 작성 연습: [공통 8단계 작성 가이드](../../docs/study/WORKFLOW_GUIDE.md)에서 질문·요구 산출물·복사할 주석 틀과 DP·고급 문제의 추가 증명을 읽는다. [사용자가 제시한 같은 숫자는 싫어 AC 코드 설명](../../docs/study/SAME_NUMBER_WALKTHROUGH.md), [기초부터 심화까지 100문항](../../docs/study/QUESTIONS.md)으로 연결한다. AC는 사용자 채점 보고로 별도 확인했으며, 해설 제공 자체를 숙달 증거로 기록하지 않는다. 해당 풀이가 stack/queue 컨테이너 사용을 입증하는 것은 아니므로 아래 개념 상태는 별도 평가한다.
+
 2026-10-07 GitHub 동기화: [코딩테스트 가이드 원문 TXT](../../코딩테스트_가이드.txt)에 사용자가 첨부한 통합 사고 과정 텍스트를 그대로 보관했다. 제목·표·문서 링크를 따라 읽을 때는 아래 Markdown 문서를 사용한다.
 
 상태는 Not Started, Learning, Converted 중 하나다. Converted는 해당 개념을 사용한 실전 문제 AC가 최소 1개 있다는 뜻이다.

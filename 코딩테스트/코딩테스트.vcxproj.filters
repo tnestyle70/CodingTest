@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="스택과큐">
+      <UniqueIdentifier>{D87C7F60-7A72-4594-8F09-132E50AA10F0}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
     <Filter Include="해시">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="같은숫자는싫어.cpp">
+      <Filter>스택과큐</Filter>
+    </ClCompile>
     <ClCompile Include="완주하지못한선수.cpp">
       <Filter>해시</Filter>
     </ClCompile>

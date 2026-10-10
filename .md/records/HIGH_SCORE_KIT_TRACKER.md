@@ -2,6 +2,8 @@
 
 정본 확인일: 2026-07-26
 
+진도 갱신일: 2026-10-10 — 같은 숫자는 싫어 사용자 보고 AC 반영.
+
 공식 Kit: https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit
 
 상태:
@@ -25,11 +27,11 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 | 4 | [의상](https://school.programmers.co.kr/learn/courses/30/lessons/42578) | 2 | AC | 2026-07-27 | - |
 | 5 | [베스트앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579) | 3 | AC | 2026-07-27 | - |
 
-## 스택/큐 0/6
+## 스택/큐 1/6
 
 | # | 문제 | Level | 상태 | AC 날짜 | 복습 |
 |---:|---|---:|---|---|---|
-| 1 | [같은 숫자는 싫어](https://school.programmers.co.kr/learn/courses/30/lessons/12906) | 1 | Not Started | - | - |
+| 1 | [같은 숫자는 싫어](https://school.programmers.co.kr/learn/courses/30/lessons/12906) | 1 | AC | 2026-10-10 | [회고](../../problems/stack_queue/12906_같은_숫자는_싫어/REVIEW.md), 독립 설명·지연 복원 대기 |
 | 2 | [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) | 2 | Not Started | - | - |
 | 3 | [올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) | 2 | Not Started | - | - |
 | 4 | [프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) | 2 | Not Started | - | - |
@@ -114,8 +116,10 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 
 ## Totals
 
-- AC: 5 / 47
+- AC: 6 / 47
 - Reviewed: 0 / 47
 - Mastered: 0 / 47
-- Current: 같은 숫자는 싫어 (스택/큐 1번)
+- Current: 같은 숫자는 싫어 AC 후 설명·지연 복원 (다음 신규 문제: 기능개발)
+
+2026-10-10 근거: 사용자가 정확성 17개·효율성 4개 전부 통과, 100.0점을 보고했다. 과거 풀이 참고와 질문 힌트를 받은 재풀이이며, 해설 작성만으로 Reviewed/Mastered를 올리지 않는다. 상세 증거는 [세션 기록](2026-10-10_STACK_QUEUE_SESSION.md)을 따른다.
 

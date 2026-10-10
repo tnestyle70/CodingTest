@@ -1,6 +1,6 @@
 # Accepted Solution Archive
 
-현재 작업 파일은 코딩테스트/main.cpp다. 실제 프로그래머스 AC를 받은 뒤에만 아래 구조로 제출 코드를 보존한다.
+현재 편집용 코드는 `코딩테스트/<문제명>.cpp`에 둔다. 같은 숫자는 싫어의 실행 진입점은 별도 `디버깅/Debugging/SameNumberDebug.cpp`이며 편집용 코드를 포함한다. 실제 프로그래머스 AC를 받은 뒤에만 아래 구조로 제출 코드를 보존한다.
 
     problems/<category>/<lesson-id>_<slug>/
     ├── solution.cpp

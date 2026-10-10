@@ -12,7 +12,12 @@ foreach(problem_source IN LISTS PROBLEM_SOURCES)
     get_filename_component(problem_stem "${problem_source}" NAME_WE)
     set(problem_target "problem_${problem_index}")
 
-    add_executable(${problem_target} "${problem_source}")
+    # This problem keeps editing and debugger entry points in separate projects.
+    if(problem_stem STREQUAL "같은숫자는싫어")
+        add_executable(${problem_target} "디버깅/Debugging/SameNumberDebug.cpp")
+    else()
+        add_executable(${problem_target} "${problem_source}")
+    endif()
     set_target_properties(${problem_target} PROPERTIES
         OUTPUT_NAME "${problem_stem}"
         CXX_EXTENSIONS OFF

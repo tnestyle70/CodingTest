@@ -6,6 +6,8 @@
 
 관련 정본: 정의·예산표 = [ESSENCE_CORE.md](ESSENCE_CORE.md) · 유형×불변식 = [ESSENCE_BRIDGE.md](ESSENCE_BRIDGE.md) · HTML판 = [CHECKPOINT_QUESTIONS.html](CHECKPOINT_QUESTIONS.html)
 
+2026-10-10 사용자 요청 확장: [8단계를 실제 답변으로 쓰는 가이드](../../docs/study/WORKFLOW_GUIDE.md)는 코드 주석 틀과 DP·고급 문제의 추가 증명 질문을 제공한다. [같은 숫자는 싫어 작성 예시](../../docs/study/SAME_NUMBER_WALKTHROUGH.md)는 사용자가 제시한 오른쪽 비교 AC 코드를 설명한다. AC는 별도의 사용자 채점 보고로 기록했으며, 이 해설을 코딩 전 선서술이나 독립 복원 증거로 기록하지 않는다. [100문항](../../docs/study/QUESTIONS.md)은 필요한 부분을 선택해 한 질문씩 연습한다. 기존 질문 순서와 정본은 이 문서로 유지한다.
+
 ## 전체 지도
 
 ```text
