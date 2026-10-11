@@ -35,7 +35,7 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 | 2 | [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) | 2 | Attempting | - | 시뮬레이션 제시, 인덱스 접근 전 범위 확인 보완 |
 | 3 | [올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) | 2 | Attempting | - | stack 구현 제시, 설명 미답과 실제 채점 확인 대기 |
 | 4 | [프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) | 2 | Attempting | - | [검토](../10-10/PROCESS_REVIEW.md), 마지막 코드 논리 확인, 채점 미확인 |
-| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Attempting | - | queue 재작성과 [답변 검토](../10-11/BRIDGE_TRUCK_REVIEW.md) 최초 6/16 → 2·3·6 재답변 반영 7/16. 공간·불변식 보완, 실제 채점·독립 복원 미확인 |
+| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Attempting | - | [답변 검토](../10-11/BRIDGE_TRUCK_REVIEW.md) 최초 6/16 → 7/16. 요청에 따라 [O(N) 참고 풀이](../10-11/BRIDGE_TRUCK_REFERENCE_WALKTHROUGH.md) 제공·코치 코드 로컬 검증. 사용자 채점·독립 복원 미확인 |
 | 6 | [주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584) | 2 | Attempting | - | 직접 이중 순회 풀이 제시, 비용·효율성 검증 대기 |
 
 ## 힙 0/3
