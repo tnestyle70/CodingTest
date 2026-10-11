@@ -15,8 +15,9 @@ foreach(problem_source IN LISTS PROBLEM_SOURCES)
     # This problem keeps editing and debugger entry points in separate projects.
     if(problem_stem STREQUAL "같은숫자는싫어")
         add_executable(${problem_target} "디버깅/Debugging/SameNumberDebug.cpp")
-    elseif(problem_stem STREQUAL "주식가격")
-        # Solution-only draft: compile without linking an executable or a main.
+    elseif(problem_stem STREQUAL "주식가격"
+           OR problem_stem STREQUAL "다리를지나는트럭_따라쓰기")
+        # Solution-only drafts: compile without linking an executable or a main.
         add_library(${problem_target} OBJECT "${problem_source}")
     else()
         add_executable(${problem_target} "${problem_source}")

@@ -5,6 +5,10 @@
       <UniqueIdentifier>{D87C7F60-7A72-4594-8F09-132E50AA10F0}</UniqueIdentifier>
       <Extensions>cpp</Extensions>
     </Filter>
+    <Filter Include="스택과큐\다리를지나는트럭">
+      <UniqueIdentifier>{C1B7462B-54D7-49B1-9DC5-A9820D2EA837}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
     <Filter Include="해시">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -16,6 +20,15 @@
     </ClCompile>
     <ClCompile Include="주식가격.cpp">
       <Filter>스택과큐</Filter>
+    </ClCompile>
+    <ClCompile Include="..\.md\10-11\BRIDGE_TRUCK_QUEUE_SOLUTION.cpp">
+      <Filter>스택과큐\다리를지나는트럭</Filter>
+    </ClCompile>
+    <ClCompile Include="..\.md\10-11\BRIDGE_TRUCK_REFERENCE.cpp">
+      <Filter>스택과큐\다리를지나는트럭</Filter>
+    </ClCompile>
+    <ClCompile Include="다리를지나는트럭_따라쓰기.cpp">
+      <Filter>스택과큐\다리를지나는트럭</Filter>
     </ClCompile>
     <ClCompile Include="완주하지못한선수.cpp">
       <Filter>해시</Filter>
