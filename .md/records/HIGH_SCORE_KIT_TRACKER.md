@@ -2,7 +2,7 @@
 
 정본 확인일: 2026-07-26
 
-진도 갱신일: 2026-10-10 — 같은 숫자는 싫어 사용자 보고 AC 반영.
+진도 갱신일: 2026-10-11 — 스택/큐 다섯 문제의 실제 코드 시도를 Attempting으로 반영. 새 AC 추가 없음.
 
 공식 Kit: https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit
 
@@ -32,11 +32,11 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 | # | 문제 | Level | 상태 | AC 날짜 | 복습 |
 |---:|---|---:|---|---|---|
 | 1 | [같은 숫자는 싫어](https://school.programmers.co.kr/learn/courses/30/lessons/12906) | 1 | AC | 2026-10-10 | [답변 검토](../10-10/SAME_NUMBER_REVIEW.md) 6/16, 제약·비용·정확성 설명 보완 및 지연 복원 대기 |
-| 2 | [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) | 2 | Not Started | - | - |
-| 3 | [올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) | 2 | Not Started | - | 사용자 다음 선택, 공통 답변 양식 준비 |
-| 4 | [프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) | 2 | Not Started | - | - |
-| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Not Started | - | - |
-| 6 | [주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584) | 2 | Not Started | - | - |
+| 2 | [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) | 2 | Attempting | - | 시뮬레이션 제시, 인덱스 접근 전 범위 확인 보완 |
+| 3 | [올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) | 2 | Attempting | - | stack 구현 제시, 설명 미답과 실제 채점 확인 대기 |
+| 4 | [프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) | 2 | Attempting | - | [검토](../10-10/PROCESS_REVIEW.md), 마지막 코드 논리 확인, 채점 미확인 |
+| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Attempting | - | 도움받아 해결했다는 보고, 최종 코드·채점 미확인. [수정 이력](../10-11/WEAKNESSES_AND_RESTART.md) |
+| 6 | [주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584) | 2 | Attempting | - | 직접 이중 순회 풀이 제시, 비용·효율성 검증 대기 |
 
 ## 힙 0/3
 
@@ -119,9 +119,11 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 - AC: 6 / 47
 - Reviewed: 0 / 47
 - Mastered: 0 / 47
-- Current: 같은 숫자는 싫어 8단계 답변 보완·지연 복원 (사용자 다음 선택: 올바른 괄호)
+- Current: 같은 숫자는 싫어 2·3·6번 보완 → 트럭 상태 추적·재구현 → 프로세스 적용. [현재 원칙과 관찰](../10-11/WEAKNESSES_AND_RESTART.md)
 
 2026-10-10 근거: 사용자가 정확성 17개·효율성 4개 전부 통과, 100.0점을 보고했다. 과거 풀이 참고와 질문 힌트를 받은 재풀이이며, 해설 작성만으로 Reviewed/Mastered를 올리지 않는다. 상세 증거는 [세션 기록](2026-10-10_STACK_QUEUE_SESSION.md)을 따른다.
 
-후속 근거: 사용자 8단계 답변과 경계 테스트 두 개의 통과 보고를 [10월 10일 검토](../10-10/SAME_NUMBER_REVIEW.md)에 반영했다. 설명 점수 6/16은 해당 답변의 완성도이며, AC 점수와 구분한다. 올바른 괄호는 양식 요청만 확인되어 아직 Not Started를 유지한다.
+후속 근거: 사용자 8단계 답변과 경계 테스트 두 개의 통과 보고를 [10월 10일 검토](../10-10/SAME_NUMBER_REVIEW.md)에 반영했다. 설명 점수 6/16은 해당 답변의 완성도이며, AC 점수와 구분한다.
+
+2026-10-11 보완: 그 뒤 대화로 받은 올바른 괄호·기능개발·프로세스·트럭·주식가격 코드를 시도 증거로 반영했다. 코드 제시와 도움받아 해결했다는 보고는 실제 채점 결과와 구분한다. [여섯 문제 검토](../10-11/WEAKNESSES_AND_RESTART.md)에 잘된 수정·남은 오류·미확인 결과를 함께 기록했다.
 
