@@ -35,7 +35,7 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 | 2 | [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) | 2 | Attempting | - | 시뮬레이션 제시, 인덱스 접근 전 범위 확인 보완 |
 | 3 | [올바른 괄호](https://school.programmers.co.kr/learn/courses/30/lessons/12909) | 2 | Attempting | - | stack 구현 제시, 설명 미답과 실제 채점 확인 대기 |
 | 4 | [프로세스](https://school.programmers.co.kr/learn/courses/30/lessons/42587) | 2 | Attempting | - | [검토](../10-10/PROCESS_REVIEW.md), 마지막 코드 논리 확인, 채점 미확인 |
-| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Attempting | - | 도움받아 해결했다는 보고, 최종 코드·채점 미확인. [수정 이력](../10-11/WEAKNESSES_AND_RESTART.md) |
+| 5 | [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583) | 2 | Attempting | - | 도움받은 수정본 보관, 채점·독립 복원 미확인. [복원 연습](../10-11/BRIDGE_TRUCK_RETRY.md) |
 | 6 | [주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584) | 2 | Attempting | - | 직접 이중 순회 풀이 제시, 비용·효율성 검증 대기 |
 
 ## 힙 0/3
@@ -119,7 +119,7 @@ AC와 이후 상태는 실제 제출 또는 복습 증거 없이 올리지 않�
 - AC: 6 / 47
 - Reviewed: 0 / 47
 - Mastered: 0 / 47
-- Current: 같은 숫자는 싫어 2·3·6번 보완 → 트럭 상태 추적·재구현 → 프로세스 적용. [현재 원칙과 관찰](../10-11/WEAKNESSES_AND_RESTART.md)
+- Current: 사용자 선택으로 트럭의 상태 설명·추적·재구현. 같은 숫자는 싫어의 범위 답변은 교정했고 비용·불변식은 이후 보완. [현재 연습](../10-11/BRIDGE_TRUCK_RETRY.md)
 
 2026-10-10 근거: 사용자가 정확성 17개·효율성 4개 전부 통과, 100.0점을 보고했다. 과거 풀이 참고와 질문 힌트를 받은 재풀이이며, 해설 작성만으로 Reviewed/Mastered를 올리지 않는다. 상세 증거는 [세션 기록](2026-10-10_STACK_QUEUE_SESSION.md)을 따른다.
 
